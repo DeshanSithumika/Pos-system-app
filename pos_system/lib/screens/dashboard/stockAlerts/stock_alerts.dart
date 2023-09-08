@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pos_system/Utils/custom_text.dart';
 import 'package:pos_system/widgets/five_colum_header.dart';
 import 'package:pos_system/widgets/four_colum_data_row.dart';
+import 'package:pos_system/widgets/four_column_header.dart';
 
 class StockAlerts extends StatefulWidget {
   const StockAlerts({super.key});
@@ -38,12 +39,36 @@ class _StockAlertsState extends State<StockAlerts> {
             colFour: "Available",
             colFive: "Action",
           ),
-          Expanded(
-              child: SizedBox(
+          SizedBox(
+            height: 300,
             child: ListView.builder(
               itemBuilder: (context, index) => const FourColumDataRow(),
               itemCount: 1,
             ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(color: Colors.amber),
+            child: const Row(
+              children: [
+                Icon(Icons.warning),
+                SizedBox(width: 4),
+                Text(
+                  "Expiring Items in next 10 days",
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                )
+              ],
+            ),
+          ),
+          const FourColumnHeader(
+              colOne: "Product",
+              colTwo: "Quantity",
+              colTree: "Exp. Date",
+              colFour: "status"),
+          Expanded(
+              child: ListView.builder(
+            itemBuilder: (context, index) => const FourColumDataRow(),
+            itemCount: 3,
           )),
         ],
       ),

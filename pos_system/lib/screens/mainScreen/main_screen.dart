@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pos_system/Utils/util_nav.dart';
+import 'package:pos_system/screens/Inventory/inventory_screen.dart';
 import 'package:pos_system/screens/dashboard/dashboard.dart';
 import 'package:pos_system/screens/pos/pos_screen.dart';
+import 'package:pos_system/screens/products/products_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -43,7 +45,10 @@ class _MainScreenState extends State<MainScreen> {
           backgroundColor: Colors.blue,
           child: ListView(
             children: [
-              // SizedBox(child: Image.asset("")),
+              // Image.asset(
+              //   "assets/logo3.png",
+              //   scale: 2,
+              // ),
               ListTile(
                 leading: const Icon(Icons.dashboard_rounded),
                 title: const Text("Dashboard"),
@@ -61,12 +66,16 @@ class _MainScreenState extends State<MainScreen> {
               ListTile(
                 leading: const Icon(Icons.shopify_sharp),
                 title: const Text("Products"),
-                onTap: () {},
+                onTap: () {
+                  UtilNav.navigateTo(context, const ProductsScreen());
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.inventory_2_outlined),
                 title: const Text("Inventory"),
-                onTap: () {},
+                onTap: () {
+                  UtilNav.navigateTo(context, const InventoryScreen());
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.list_alt_rounded),
